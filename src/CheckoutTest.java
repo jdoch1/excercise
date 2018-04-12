@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
  */
 public class CheckoutTest {
 
-    Checkout checkout = new Checkout();
+    private Checkout checkout = new Checkout();
 
 
 
@@ -39,6 +39,42 @@ public class CheckoutTest {
 
         double expectedPrice = ProductConstants.APPLE_PRICE *2;
         String[] strings = {ProductConstants.APPLE_NAME, ProductConstants.APPLE_NAME, ProductConstants.APPLE_NAME, ProductConstants.APPLE_NAME};
+        double result = checkout.checkout(strings);
+        assertEquals(expectedPrice, result);
+    }
+
+    @Test
+    public void checkout__oneOrangeArray__priceIsRight(){
+
+        double expectedPrice = ProductConstants.ORANGE_PRICE;
+        String[] strings = {ProductConstants.ORANGE_NAME};
+        double result = checkout.checkout(strings);
+        assertEquals(expectedPrice, result);
+    }
+
+    @Test
+    public void checkout__twoOrangeArray__priceIsRight(){
+
+        double expectedPrice = ProductConstants.ORANGE_PRICE * 2;
+        String[] strings = {ProductConstants.ORANGE_NAME, ProductConstants.ORANGE_NAME};
+        double result = checkout.checkout(strings);
+        assertEquals(expectedPrice, result);
+    }
+
+    @Test
+    public void checkout__threeOrangeArray__priceIsRight(){
+
+        double expectedPrice = ProductConstants.ORANGE_PRICE * 2;
+        String[] strings = {ProductConstants.ORANGE_NAME, ProductConstants.ORANGE_NAME, ProductConstants.ORANGE_NAME};
+        double result = checkout.checkout(strings);
+        assertEquals(expectedPrice, result);
+    }
+
+    @Test
+    public void checkout__fourOrangeArray__priceIsRight(){
+
+        double expectedPrice = ProductConstants.ORANGE_PRICE * 3;
+        String[] strings = {ProductConstants.ORANGE_NAME, ProductConstants.ORANGE_NAME, ProductConstants.ORANGE_NAME, ProductConstants.ORANGE_NAME};
         double result = checkout.checkout(strings);
         assertEquals(expectedPrice, result);
     }

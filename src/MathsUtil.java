@@ -12,5 +12,18 @@ public class MathsUtil {
         }
     }
 
+    public static double calculateThreeForTwo(double price, int quantity){
+
+        if(quantity == 2){
+            return price * 2;
+        }
+
+        if(quantity % 3 == 0){
+            return ((quantity * price) *2) / 3;
+        } else {
+            return price + (((quantity -1) * price) * 2) / 3;
+        }
+    }
+
 
 }

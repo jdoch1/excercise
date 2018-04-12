@@ -33,7 +33,7 @@ public class Checkout {
                 return MathsUtil.calculateTwoForOne(ProductConstants.APPLE_PRICE, quantity);
 
             case ProductConstants.ORANGE_NAME:
-                return ProductConstants.ORANGE_PRICE * quantity;
+                return  MathsUtil.calculateThreeForTwo(ProductConstants.ORANGE_PRICE, quantity);
 
             default:
                 throw new InvalidParameterException("Invalid item name: " + item);
