@@ -1,3 +1,4 @@
+import java.math.BigDecimal;
 import java.security.InvalidParameterException;
 import java.util.Arrays;
 import java.util.Map;
@@ -12,11 +13,17 @@ public class Checkout {
 
     public double checkout(String[] items) {
 
-        return getCountOfStringsInMap(items)
+        double cost = getCountOfStringsInMap(items)
                 .entrySet()
                 .stream()
-                .mapToDouble(e -> calculateCosts( e.getKey(),  Math.toIntExact(e.getValue()) ))
+                .mapToDouble(e -> calculateCosts(e.getKey(), Math.toIntExact(e.getValue())))
                 .sum();
+
+        BigDecimal poundsPennies = new BigDecimal(Double.toString(cost));
+        poundsPennies.setScale(2, BigDecimal.ROUND_CEILING);
+        System.out.println("Total price: £" + cost);
+
+        return cost;
     }
 
     private Map<String, Long> getCountOfStringsInMap(String[] items) {
@@ -33,7 +40,7 @@ public class Checkout {
                 return MathsUtil.calculateTwoForOne(ProductConstants.APPLE_PRICE, quantity);
 
             case ProductConstants.ORANGE_NAME:
-                return  MathsUtil.calculateThreeForTwo(ProductConstants.ORANGE_PRICE, quantity);
+                return MathsUtil.calculateThreeForTwo(ProductConstants.ORANGE_PRICE, quantity);
 
             default:
                 throw new InvalidParameterException("Invalid item name: " + item);
