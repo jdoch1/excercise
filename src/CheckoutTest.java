@@ -1,8 +1,10 @@
 import org.junit.jupiter.api.Test;
 
+import java.security.InvalidParameterException;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 /**
@@ -29,5 +31,13 @@ public class CheckoutTest {
         double result = checkout.checkout(strings);
         assertEquals(expectedPrice, result);
     }
+
+    @Test
+    public void checkout__unknownItemInArray__errorThrown(){
+        final String unknownItem = "UNKNOWN";
+        String[] strings = {ProductConstants.ORANGE_NAME, unknownItem};
+        assertThrows(InvalidParameterException.class, () -> checkout.checkout(strings));
+    }
+
 
 }
