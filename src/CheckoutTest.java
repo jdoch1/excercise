@@ -13,17 +13,12 @@ public class CheckoutTest {
     Checkout checkout = new Checkout();
 
     @Test
-    public void checkout__twoOrangeOneAppleArray__MapContainsTwoOrangeOneApple(){
+    public void checkout__twoOrangeOneAppleArray__priceIsRight(){
 
+        double expectedPrice = ProductConstants.ORANGE_PRICE * 2 + ProductConstants.APPLE_PRICE;
         String[] strings = {ProductConstants.ORANGE_NAME, ProductConstants.ORANGE_NAME, ProductConstants.APPLE_NAME};
-        Map<String, Long> result = checkout.checkout(strings);
-
-        int orangeCount = Math.toIntExact(result.get(ProductConstants.ORANGE_NAME));
-        int appleCount = Math.toIntExact(result.get(ProductConstants.APPLE_NAME));
-
-        assertEquals(orangeCount, 2);
-        assertEquals(appleCount, 1);
-
+        double result = checkout.checkout(strings);
+        assertEquals(expectedPrice, result);
     }
 
 }
