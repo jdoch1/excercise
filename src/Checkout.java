@@ -30,7 +30,7 @@ public class Checkout {
         switch (item) {
 
             case ProductConstants.APPLE_NAME:
-                return ProductConstants.APPLE_PRICE * quantity;
+                return MathsUtil.calculateTwoForOne(ProductConstants.APPLE_PRICE, quantity);
 
             case ProductConstants.ORANGE_NAME:
                 return ProductConstants.ORANGE_PRICE * quantity;

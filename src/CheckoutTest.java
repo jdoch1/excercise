@@ -14,6 +14,8 @@ public class CheckoutTest {
 
     Checkout checkout = new Checkout();
 
+
+
     @Test
     public void checkout__twoOrangeOneAppleArray__priceIsRight(){
 
@@ -26,8 +28,17 @@ public class CheckoutTest {
     @Test
     public void checkout__threeAppleOneOrangeArray__priceIsRight(){
 
-        double expectedPrice = ProductConstants.ORANGE_PRICE + ProductConstants.APPLE_PRICE * 3;
+        double expectedPrice = ProductConstants.ORANGE_PRICE + ProductConstants.APPLE_PRICE * 2;
         String[] strings = {ProductConstants.ORANGE_NAME, ProductConstants.APPLE_NAME, ProductConstants.APPLE_NAME, ProductConstants.APPLE_NAME};
+        double result = checkout.checkout(strings);
+        assertEquals(expectedPrice, result);
+    }
+
+    @Test
+    public void checkout__fourAppleArray__priceIsRight(){
+
+        double expectedPrice = ProductConstants.APPLE_PRICE *2;
+        String[] strings = {ProductConstants.APPLE_NAME, ProductConstants.APPLE_NAME, ProductConstants.APPLE_NAME, ProductConstants.APPLE_NAME};
         double result = checkout.checkout(strings);
         assertEquals(expectedPrice, result);
     }
