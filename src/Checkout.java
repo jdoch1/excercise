@@ -20,8 +20,8 @@ public class Checkout {
                 .sum();
 
         BigDecimal poundsPennies = new BigDecimal(Double.toString(cost));
-        poundsPennies.setScale(2, BigDecimal.ROUND_CEILING);
-        System.out.println("Total price: £" + cost);
+        poundsPennies = poundsPennies.setScale(2, BigDecimal.ROUND_CEILING);
+        System.out.println("Total price: £" + poundsPennies);
 
         return cost;
     }
