@@ -21,4 +21,13 @@ public class CheckoutTest {
         assertEquals(expectedPrice, result);
     }
 
+    @Test
+    public void checkout__threeAppleOneOrangeArray__priceIsRight(){
+
+        double expectedPrice = ProductConstants.ORANGE_PRICE + ProductConstants.APPLE_PRICE * 3;
+        String[] strings = {ProductConstants.ORANGE_NAME, ProductConstants.APPLE_NAME, ProductConstants.APPLE_NAME, ProductConstants.APPLE_NAME};
+        double result = checkout.checkout(strings);
+        assertEquals(expectedPrice, result);
+    }
+
 }
